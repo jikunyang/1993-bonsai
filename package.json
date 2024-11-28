@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jikunyang/1993-bonsai#readme",
   "dependencies": {
+    "flickity": "^3.0.0",
     "gsap": "^3.12.5",
     "lenis": "^1.1.17",
     "parcel": "^2.13.2",

@@ -2,6 +2,8 @@ import hideLoader from '/js/preloader.js';
 import progressTextUpdate from '/js/pageProgressText.js';
 import smoothScroll from '/js/smoothScroll.js';
 import navHover from '/js/navHover.js';
+import sliderScroll from '/js/homeSlider.js'
+
 
 
 const parceled = true
@@ -12,6 +14,7 @@ const onReady = () => {
    smoothScroll();
    progressTextUpdate();
    navHover();
+   sliderScroll();
 }
 const onLoading = () =>{
 
