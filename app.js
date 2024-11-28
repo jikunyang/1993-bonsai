@@ -4,6 +4,7 @@ import smoothScroll from '/js/smoothScroll.js';
 import navHover from '/js/navHover.js';
 
 
+const parceled = true
 
 const onReady = () => {
 

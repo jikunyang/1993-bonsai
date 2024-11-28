@@ -605,6 +605,7 @@ var _smoothScrollJs = require("/js/smoothScroll.js");
 var _smoothScrollJsDefault = parcelHelpers.interopDefault(_smoothScrollJs);
 var _navHoverJs = require("/js/navHover.js");
 var _navHoverJsDefault = parcelHelpers.interopDefault(_navHoverJs);
+const parceled = true;
 const onReady = ()=>{
     (0, _preloaderJsDefault.default)();
     (0, _smoothScrollJsDefault.default)();
