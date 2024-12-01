@@ -4,39 +4,36 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const textWordsSplit = () => {
-    new SplitType(".text-fade-in", {
-        types: "words",
+const textCharsSplit = () => {
+    new SplitType(".char-fade-in", {
+        types: "chars",
         tagName: "span",
     });
     
 }
-const textBlurIn = () => {
-    $(".text-fade-in").each(function () {
+const charFadeIn = () => {
+    $(".char-fade-in").each(function () {
         let triggerElement = $(this);
-        let targetElement = triggerElement.find(".word");
-        
+        let targetElement = triggerElement.find(".char");
         
 
         let tl = gsap.timeline({
             scrollTrigger: {
                 trigger: triggerElement,
-                start: "top 90%",
-                end: "top 50%",
+                start: "top 80%",
+                end: "top 60%", 
                 scrub: 1
             }
         });
 
         tl.from(targetElement, {
-            duration: 0.8,
-            filter: "blur(10px)", 
-            ease: "power1.inOut",
+            duration: 0.01,
+            opacity: 0,
             stagger: {
-                amount: 0.4,
-                from: "0"
+                amount: 0.1,
             }
         });
     });
 };
 
-export {textWordsSplit, textBlurIn};
+export {textCharsSplit, charFadeIn};

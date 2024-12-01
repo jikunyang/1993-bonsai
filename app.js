@@ -4,6 +4,7 @@ import smoothScroll from '/js/smoothScroll.js';
 import navHover from '/js/navHover.js';
 import {titleCharsSplit, titleIn} from '/js/titleScrollIn.js'
 import {textWordsSplit, textBlurIn} from '/js/textBlurIn.js'
+import {textCharsSplit, charFadeIn} from '/js/textIn.js'
 
  
 const parceled = true
@@ -18,6 +19,8 @@ const onReady = () => {
     titleIn();
     textWordsSplit();
     textBlurIn();
+    textCharsSplit();
+    charFadeIn();
 }
 const onLoading = () => {
 
