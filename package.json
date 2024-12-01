@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jikunyang/1993-bonsai-new.git"
+    "url": "git+https://github.com/jikunyang/1993-bonsai.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jikunyang/1993-bonsai-new/issues"
+    "url": "https://github.com/jikunyang/1993-bonsai/issues"
   },
-  "homepage": "https://github.com/jikunyang/1993-bonsai-new#readme",
+  "homepage": "https://github.com/jikunyang/1993-bonsai#readme",
   "dependencies": {
     "flickity": "^3.0.0",
     "gsap": "^3.12.5",
