@@ -3,14 +3,12 @@ import { gsap } from "gsap";
 
 function hideLoader() {
     // Trigger click to hide loader
-
     document.querySelector("#load-trigger").click();
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+const loader = () => {
     // Set initial display for #load-trigger to block
-    const trigger = document.querySelector("#load-trigger").style.display = "block";
-
+    const trigger = document.querySelector("#load-trigger");
     // Preloader animation
     let tl = gsap.timeline();
     tl.to(trigger, {
@@ -19,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power2In",
         onComplete: hideLoader
     });
-});
+}
 
-export default hideLoader;
+
+
+export default loader;

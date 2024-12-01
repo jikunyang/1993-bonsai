@@ -1,22 +1,21 @@
-import hideLoader from '/js/preloader.js';
+import loader from '/js/preloader.js';
 import progressTextUpdate from '/js/pageProgressText.js';
 import smoothScroll from '/js/smoothScroll.js';
 import navHover from '/js/navHover.js';
-import sliderScroll from '/js/homeSlider.js'
-
+import textScrollIn from '/js/textScrollIn.js'
 
 
 const parceled = true
 
 const onReady = () => {
 
-   hideLoader();
-   smoothScroll();
-   progressTextUpdate();
-   navHover();
-   sliderScroll();
+    loader();
+    smoothScroll();
+    progressTextUpdate();
+    navHover();
+    textScrollIn();
 }
-const onLoading = () =>{
+const onLoading = () => {
 
 
 }
@@ -25,7 +24,7 @@ if (document.readyState !== 'loading') {
     onLoading()
     onReady()
     console.log('readystate')
-  } else {
+} else {
     console.log('load')
     window.addEventListener('load', onReady)
     document.addEventListener('DOMContentLoaded', onLoading)
