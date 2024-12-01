@@ -2,9 +2,10 @@ import loader from '/js/preloader.js';
 import progressTextUpdate from '/js/pageProgressText.js';
 import smoothScroll from '/js/smoothScroll.js';
 import navHover from '/js/navHover.js';
-import textScrollIn from '/js/textScrollIn.js'
+import {titleCharsSplit, titleIn} from '/js/titleScrollIn.js'
+import {textWordsSplit, textBlurIn} from '/js/textBlurIn.js'
 
-
+ 
 const parceled = true
 
 const onReady = () => {
@@ -13,7 +14,10 @@ const onReady = () => {
     smoothScroll();
     progressTextUpdate();
     navHover();
-    textScrollIn();
+    titleCharsSplit();
+    titleIn();
+    textWordsSplit();
+    textBlurIn();
 }
 const onLoading = () => {
 

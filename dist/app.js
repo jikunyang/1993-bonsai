@@ -605,15 +605,18 @@ var _smoothScrollJs = require("/js/smoothScroll.js");
 var _smoothScrollJsDefault = parcelHelpers.interopDefault(_smoothScrollJs);
 var _navHoverJs = require("/js/navHover.js");
 var _navHoverJsDefault = parcelHelpers.interopDefault(_navHoverJs);
-var _textScrollInJs = require("/js/textScrollIn.js");
-var _textScrollInJsDefault = parcelHelpers.interopDefault(_textScrollInJs);
+var _titleScrollInJs = require("/js/titleScrollIn.js");
+var _textBlurInJs = require("/js/textBlurIn.js");
 const parceled = true;
 const onReady = ()=>{
     (0, _preloaderJsDefault.default)();
     (0, _smoothScrollJsDefault.default)();
     (0, _pageProgressTextJsDefault.default)();
     (0, _navHoverJsDefault.default)();
-    (0, _textScrollInJsDefault.default)();
+    (0, _titleScrollInJs.titleCharsSplit)();
+    (0, _titleScrollInJs.titleIn)();
+    (0, _textBlurInJs.textWordsSplit)();
+    (0, _textBlurInJs.textBlurIn)();
 };
 const onLoading = ()=>{};
 if (document.readyState !== 'loading') {
@@ -626,7 +629,7 @@ if (document.readyState !== 'loading') {
     document.addEventListener('DOMContentLoaded', onLoading);
 }
 
-},{"/js/preloader.js":"fr1Gn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/js/pageProgressText.js":"fPemX","/js/smoothScroll.js":"fOdkn","/js/navHover.js":"lf9Jh","/js/textScrollIn.js":"2jXX0"}],"fr1Gn":[function(require,module,exports,__globalThis) {
+},{"/js/preloader.js":"fr1Gn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/js/pageProgressText.js":"fPemX","/js/smoothScroll.js":"fOdkn","/js/navHover.js":"lf9Jh","/js/titleScrollIn.js":"dPyUk","/js/textBlurIn.js":"6tqCU"}],"fr1Gn":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _gsap = require("gsap");
@@ -7710,12 +7713,12 @@ var _splitTypeDefault = parcelHelpers.interopDefault(_splitType);
 var _gsap = require("gsap");
 var _gsapDefault = parcelHelpers.interopDefault(_gsap);
 const navHover = ()=>{
-    new (0, _splitTypeDefault.default)(".nav-text", {
+    new (0, _splitTypeDefault.default)(".random", {
         types: "words, chars",
         tagName: "span"
     });
     (0, _gsapDefault.default).matchMedia().add("(min-width: 992px)", ()=>{
-        $(".nav-text").each(function() {
+        $(".random").each(function() {
             const originalChars = $(this).find(".char").map((_, char)=>$(char).text()).get();
             $(this).hover(function() {
                 const $chars = $(this).find(".char");
@@ -8787,55 +8790,90 @@ var SplitType = /*#__PURE__*/ function() {
     return SplitType;
 }();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2jXX0":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dPyUk":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "titleCharsSplit", ()=>titleCharsSplit);
+parcelHelpers.export(exports, "titleIn", ()=>titleIn);
 var _splitType = require("split-type");
 var _splitTypeDefault = parcelHelpers.interopDefault(_splitType);
 var _gsap = require("gsap");
 var _scrollTrigger = require("gsap/ScrollTrigger");
 (0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
-const textScrollIn = ()=>{
-    new (0, _splitTypeDefault.default)(".line-split", {
+const titleCharsSplit = ()=>{
+    new (0, _splitTypeDefault.default)(".title-in", {
+        types: "chars",
+        tagName: "span"
+    });
+};
+const titleIn = ()=>{
+    $(".title-in").each(function() {
+        let triggerElement = $(this);
+        let targetElement = triggerElement.find(".char");
+        // Retrieve the value from the `data-end` attribute
+        let endValue = triggerElement.data("end") || 75; // Default to 75% if no data-end attribute is set
+        let tl = (0, _gsap.gsap).timeline({
+            scrollTrigger: {
+                trigger: triggerElement,
+                start: "top 90%",
+                end: `top ${endValue}%`,
+                scrub: 1
+            }
+        });
+        tl.from(targetElement, {
+            duration: 0.3,
+            opacity: 0,
+            ease: "power1.inOut",
+            stagger: {
+                amount: 0.4,
+                from: "0"
+            }
+        });
+    });
+};
+
+},{"split-type":"fvGAG","gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6tqCU":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "textWordsSplit", ()=>textWordsSplit);
+parcelHelpers.export(exports, "textBlurIn", ()=>textBlurIn);
+var _splitType = require("split-type");
+var _splitTypeDefault = parcelHelpers.interopDefault(_splitType);
+var _gsap = require("gsap");
+var _scrollTrigger = require("gsap/ScrollTrigger");
+(0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
+const textWordsSplit = ()=>{
+    new (0, _splitTypeDefault.default)(".text-fade-in", {
         types: "words",
         tagName: "span"
     });
-    let windowWidth = window.outerWidth;
-    $(window).resize(function() {
-        if (window.outerWidth !== windowWidth) {
-            mySplitText.revert();
-            location.reload();
-        }
-        windowWidth = window.outerWidth;
-    });
-    function createTextAnimations() {
-        // Line Animation
-        $(".line-split").each(function(index) {
-            let triggerElement = $(this);
-            let targetElement = $(this).find(".words");
-            let tl = (0, _gsap.gsap).timeline({
-                scrollTrigger: {
-                    trigger: $(this),
-                    start: "top bottom",
-                    end: "top 50%",
-                    scrub: 1
-                }
-            });
-            tl.from(targetElement, {
-                duration: 0.5,
-                opacity: 0,
-                ease: "power1.inOut",
-                stagger: {
-                    amount: 0.4,
-                    from: "0"
-                }
-            });
-        });
-    }
-    console.log("scroll in");
 };
-exports.default = textScrollIn;
+const textBlurIn = ()=>{
+    $(".text-fade-in").each(function() {
+        let triggerElement = $(this);
+        let targetElement = triggerElement.find(".word");
+        // Retrieve the value from the `data-end` attribute
+        let endValue = triggerElement.data("end") || 75; // Default to 75% if no data-end attribute is set
+        let tl = (0, _gsap.gsap).timeline({
+            scrollTrigger: {
+                trigger: triggerElement,
+                start: "top 90%",
+                end: `top 50%`,
+                scrub: 1
+            }
+        });
+        tl.from(targetElement, {
+            duration: 0.8,
+            filter: "blur(10px)",
+            ease: "power1.inOut",
+            stagger: {
+                amount: 0.4,
+                from: "0"
+            }
+        });
+    });
+};
 
-},{"split-type":"fvGAG","gsap":"fPSuC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","gsap/ScrollTrigger":"7wnFk"}]},["jQqog","igcvL"], "igcvL", "parcelRequire94c2")
+},{"split-type":"fvGAG","gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["jQqog","igcvL"], "igcvL", "parcelRequire94c2")
 
 //# sourceMappingURL=app.js.map

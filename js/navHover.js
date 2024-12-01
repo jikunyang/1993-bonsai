@@ -2,13 +2,13 @@ import SplitType from "split-type";
 import gsap from "gsap";
 
 const navHover = () => {
-  new SplitType(".nav-text", {
+  new SplitType(".random", {
     types: "words, chars",
     tagName: "span",
   });
 
   gsap.matchMedia().add("(min-width: 992px)", () => {
-    $(".nav-text").each(function () {
+    $(".random").each(function () {
       const originalChars = $(this).find(".char").map((_, char) => $(char).text()).get();
 
       $(this).hover(
