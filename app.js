@@ -5,6 +5,8 @@ import navHover from '/js/navHover.js';
 import {titleCharsSplit, titleIn} from '/js/titleScrollIn.js'
 import {textWordsSplit, textBlurIn} from '/js/wordBlurIn.js'
 import {textCharsSplit, charFadeIn} from '/js/charFadeIn.js'
+import lightboxMove from '/js/lightboxMove.js';
+
 
  
 const parceled = true;
@@ -21,6 +23,7 @@ const onReady = () => {
     textBlurIn();
     textCharsSplit();
     charFadeIn();
+    lightboxMove();
 }
 const onLoading = () => {
 

@@ -608,6 +608,8 @@ var _navHoverJsDefault = parcelHelpers.interopDefault(_navHoverJs);
 var _titleScrollInJs = require("/js/titleScrollIn.js");
 var _wordBlurInJs = require("/js/wordBlurIn.js");
 var _charFadeInJs = require("/js/charFadeIn.js");
+var _lightboxMoveJs = require("/js/lightboxMove.js");
+var _lightboxMoveJsDefault = parcelHelpers.interopDefault(_lightboxMoveJs);
 const parceled = true;
 const onReady = ()=>{
     (0, _preloaderJsDefault.default)();
@@ -620,6 +622,7 @@ const onReady = ()=>{
     (0, _wordBlurInJs.textBlurIn)();
     (0, _charFadeInJs.textCharsSplit)();
     (0, _charFadeInJs.charFadeIn)();
+    (0, _lightboxMoveJsDefault.default)();
 };
 const onLoading = ()=>{};
 if (document.readyState !== 'loading') {
@@ -632,7 +635,7 @@ if (document.readyState !== 'loading') {
     document.addEventListener('DOMContentLoaded', onLoading);
 }
 
-},{"/js/preloader.js":"fr1Gn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/js/pageProgressText.js":"fPemX","/js/smoothScroll.js":"fOdkn","/js/navHover.js":"lf9Jh","/js/titleScrollIn.js":"dPyUk","/js/charFadeIn.js":"fSUqx","/js/wordBlurIn.js":"6SUss"}],"fr1Gn":[function(require,module,exports,__globalThis) {
+},{"/js/preloader.js":"fr1Gn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/js/pageProgressText.js":"fPemX","/js/smoothScroll.js":"fOdkn","/js/navHover.js":"lf9Jh","/js/titleScrollIn.js":"dPyUk","/js/charFadeIn.js":"fSUqx","/js/wordBlurIn.js":"6SUss","/js/lightboxMove.js":"9Z8An"}],"fr1Gn":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _gsap = require("gsap");
@@ -8913,6 +8916,31 @@ const textBlurIn = ()=>{
     });
 };
 
-},{"split-type":"fvGAG","gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["jQqog","igcvL"], "igcvL", "parcelRequire94c2")
+},{"split-type":"fvGAG","gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Z8An":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _gsap = require("gsap");
+var _scrollTrigger = require("gsap/ScrollTrigger");
+(0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
+const lightboxMove = ()=>{
+    $(".lightbox").each(function(index) {
+        if ((index + 1) % 2 === 0) (0, _gsap.gsap).fromTo($(this), {
+            y: "4vw"
+        }, {
+            y: "-6vw",
+            duration: 1,
+            ease: "power1.inOut",
+            scrollTrigger: {
+                trigger: ".hero-content-wrap",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true
+            }
+        });
+    });
+};
+exports.default = lightboxMove;
+
+},{"gsap":"fPSuC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","gsap/ScrollTrigger":"7wnFk"}]},["jQqog","igcvL"], "igcvL", "parcelRequire94c2")
 
 //# sourceMappingURL=app.js.map
