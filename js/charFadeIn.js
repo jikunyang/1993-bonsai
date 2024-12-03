@@ -6,34 +6,33 @@ gsap.registerPlugin(ScrollTrigger);
 
 const textCharsSplit = () => {
     new SplitType(".char-fade-in", {
-        types: "chars",
+        types: "words, chars",//The .word class groups characters of the same word, preventing them from breaking onto different lines
         tagName: "span",
     });
-    
-}
+};
+
 const charFadeIn = () => {
     $(".char-fade-in").each(function () {
         let triggerElement = $(this);
-        let targetElement = triggerElement.find(".char");
-        
+        let targetElements = triggerElement.find(".char");
 
         let tl = gsap.timeline({
             scrollTrigger: {
                 trigger: triggerElement,
                 start: "top 80%",
-                end: "top 60%", 
-                scrub: 1
-            }
+                end: "top 60%",
+                scrub: 1,
+            },
         });
 
-        tl.from(targetElement, {
+        tl.from(targetElements, {
             duration: 0.01,
             opacity: 0,
             stagger: {
                 amount: 0.1,
-            }
+            },
         });
     });
 };
 
-export {textCharsSplit, charFadeIn};
+export { textCharsSplit, charFadeIn };

@@ -606,8 +606,8 @@ var _smoothScrollJsDefault = parcelHelpers.interopDefault(_smoothScrollJs);
 var _navHoverJs = require("/js/navHover.js");
 var _navHoverJsDefault = parcelHelpers.interopDefault(_navHoverJs);
 var _titleScrollInJs = require("/js/titleScrollIn.js");
-var _textBlurInJs = require("/js/textBlurIn.js");
-var _textInJs = require("/js/textIn.js");
+var _wordBlurInJs = require("/js/wordBlurIn.js");
+var _charFadeInJs = require("/js/charFadeIn.js");
 const parceled = true;
 const onReady = ()=>{
     (0, _preloaderJsDefault.default)();
@@ -616,10 +616,10 @@ const onReady = ()=>{
     (0, _navHoverJsDefault.default)();
     (0, _titleScrollInJs.titleCharsSplit)();
     (0, _titleScrollInJs.titleIn)();
-    (0, _textBlurInJs.textWordsSplit)();
-    (0, _textBlurInJs.textBlurIn)();
-    (0, _textInJs.textCharsSplit)();
-    (0, _textInJs.charFadeIn)();
+    (0, _wordBlurInJs.textWordsSplit)();
+    (0, _wordBlurInJs.textBlurIn)();
+    (0, _charFadeInJs.textCharsSplit)();
+    (0, _charFadeInJs.charFadeIn)();
 };
 const onLoading = ()=>{};
 if (document.readyState !== 'loading') {
@@ -632,7 +632,7 @@ if (document.readyState !== 'loading') {
     document.addEventListener('DOMContentLoaded', onLoading);
 }
 
-},{"/js/preloader.js":"fr1Gn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/js/pageProgressText.js":"fPemX","/js/smoothScroll.js":"fOdkn","/js/navHover.js":"lf9Jh","/js/titleScrollIn.js":"dPyUk","/js/textBlurIn.js":"6tqCU","/js/textIn.js":"cOXww"}],"fr1Gn":[function(require,module,exports,__globalThis) {
+},{"/js/preloader.js":"fr1Gn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/js/pageProgressText.js":"fPemX","/js/smoothScroll.js":"fOdkn","/js/navHover.js":"lf9Jh","/js/titleScrollIn.js":"dPyUk","/js/charFadeIn.js":"fSUqx","/js/wordBlurIn.js":"6SUss"}],"fr1Gn":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _gsap = require("gsap");
@@ -8835,7 +8835,45 @@ const titleIn = ()=>{
     });
 };
 
-},{"split-type":"fvGAG","gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6tqCU":[function(require,module,exports,__globalThis) {
+},{"split-type":"fvGAG","gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fSUqx":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "textCharsSplit", ()=>textCharsSplit);
+parcelHelpers.export(exports, "charFadeIn", ()=>charFadeIn);
+var _splitType = require("split-type");
+var _splitTypeDefault = parcelHelpers.interopDefault(_splitType);
+var _gsap = require("gsap");
+var _scrollTrigger = require("gsap/ScrollTrigger");
+(0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
+const textCharsSplit = ()=>{
+    new (0, _splitTypeDefault.default)(".char-fade-in", {
+        types: "words, chars",
+        tagName: "span"
+    });
+};
+const charFadeIn = ()=>{
+    $(".char-fade-in").each(function() {
+        let triggerElement = $(this);
+        let targetElements = triggerElement.find(".char");
+        let tl = (0, _gsap.gsap).timeline({
+            scrollTrigger: {
+                trigger: triggerElement,
+                start: "top 80%",
+                end: "top 60%",
+                scrub: 1
+            }
+        });
+        tl.from(targetElements, {
+            duration: 0.01,
+            opacity: 0,
+            stagger: {
+                amount: 0.1
+            }
+        });
+    });
+};
+
+},{"split-type":"fvGAG","gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6SUss":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "textWordsSplit", ()=>textWordsSplit);
@@ -8870,44 +8908,6 @@ const textBlurIn = ()=>{
             stagger: {
                 amount: 0.4,
                 from: "0"
-            }
-        });
-    });
-};
-
-},{"split-type":"fvGAG","gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cOXww":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "textCharsSplit", ()=>textCharsSplit);
-parcelHelpers.export(exports, "charFadeIn", ()=>charFadeIn);
-var _splitType = require("split-type");
-var _splitTypeDefault = parcelHelpers.interopDefault(_splitType);
-var _gsap = require("gsap");
-var _scrollTrigger = require("gsap/ScrollTrigger");
-(0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
-const textCharsSplit = ()=>{
-    new (0, _splitTypeDefault.default)(".char-fade-in", {
-        types: "chars",
-        tagName: "span"
-    });
-};
-const charFadeIn = ()=>{
-    $(".char-fade-in").each(function() {
-        let triggerElement = $(this);
-        let targetElement = triggerElement.find(".char");
-        let tl = (0, _gsap.gsap).timeline({
-            scrollTrigger: {
-                trigger: triggerElement,
-                start: "top 80%",
-                end: "top 60%",
-                scrub: 1
-            }
-        });
-        tl.from(targetElement, {
-            duration: 0.01,
-            opacity: 0,
-            stagger: {
-                amount: 0.1
             }
         });
     });

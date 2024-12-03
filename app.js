@@ -3,11 +3,11 @@ import progressTextUpdate from '/js/pageProgressText.js';
 import smoothScroll from '/js/smoothScroll.js';
 import navHover from '/js/navHover.js';
 import {titleCharsSplit, titleIn} from '/js/titleScrollIn.js'
-import {textWordsSplit, textBlurIn} from '/js/textBlurIn.js'
-import {textCharsSplit, charFadeIn} from '/js/textIn.js'
+import {textWordsSplit, textBlurIn} from '/js/wordBlurIn.js'
+import {textCharsSplit, charFadeIn} from '/js/charFadeIn.js'
 
  
-const parceled = true
+const parceled = true;
 
 const onReady = () => {
 
