@@ -4,25 +4,43 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const lightboxMove = () => {
-    $(".lightbox").each(function (index) {
-        if ((index + 1) % 2 === 0) { // Target every even-indexed element
-          gsap.fromTo(
-            $(this),
-            {  y: "4vw" }, // Starting state
-            { 
-              y: "-6vw", // Ending state
-              duration: 1, 
-              ease: "power1.inOut",
-              scrollTrigger: {
-                trigger: ".hero-content-wrap",
-                start: "top top", // Adjust start position
-                end: "bottom bottom", // Adjust end position
-                scrub: true, // Smooth scrolling effect
-              }
-            }
-          );
+  $(".lightbox").each(function (index) {
+    if ((index + 1) % 2 === 0) {
+      // Even-indexed elements
+      gsap.fromTo(
+        $(this),
+        { y: "0rem" },
+        {
+          y: "-4rem",
+          duration: 1,
+          ease: "power1.inOut",
+          scrollTrigger: {
+            trigger: ".hero-content-wrap",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+          },
         }
-      });
-}
-export default lightboxMove;
+      );
+    } else {
+      // Odd-indexed elements
+      gsap.fromTo(
+        $(this),
+        { y: "-2rem" },
+        {
+          y: "2rem",
+          duration: 1,
+          ease: "power1.inOut",
+          scrollTrigger: {
+            trigger: ".hero-content-wrap",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+          },
+        }
+      );
+    }
+  });
+};
 
+export default lightboxMove;

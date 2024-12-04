@@ -8924,10 +8924,25 @@ var _scrollTrigger = require("gsap/ScrollTrigger");
 (0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
 const lightboxMove = ()=>{
     $(".lightbox").each(function(index) {
-        if ((index + 1) % 2 === 0) (0, _gsap.gsap).fromTo($(this), {
-            y: "4vw"
+        if ((index + 1) % 2 === 0) // Even-indexed elements
+        (0, _gsap.gsap).fromTo($(this), {
+            y: "0rem"
         }, {
-            y: "-6vw",
+            y: "-4rem",
+            duration: 1,
+            ease: "power1.inOut",
+            scrollTrigger: {
+                trigger: ".hero-content-wrap",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true
+            }
+        });
+        else // Odd-indexed elements
+        (0, _gsap.gsap).fromTo($(this), {
+            y: "-2rem"
+        }, {
+            y: "2rem",
             duration: 1,
             ease: "power1.inOut",
             scrollTrigger: {
