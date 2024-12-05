@@ -635,7 +635,7 @@ if (document.readyState !== 'loading') {
     document.addEventListener('DOMContentLoaded', onLoading);
 }
 
-},{"/js/preloader.js":"fr1Gn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/js/pageProgressText.js":"fPemX","/js/smoothScroll.js":"fOdkn","/js/navHover.js":"lf9Jh","/js/titleScrollIn.js":"dPyUk","/js/charFadeIn.js":"fSUqx","/js/wordBlurIn.js":"6SUss","/js/lightboxMove.js":"9Z8An"}],"fr1Gn":[function(require,module,exports,__globalThis) {
+},{"/js/preloader.js":"fr1Gn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/js/pageProgressText.js":"fPemX","/js/smoothScroll.js":"fOdkn","/js/navHover.js":"lf9Jh","/js/titleScrollIn.js":"dPyUk","/js/wordBlurIn.js":"6SUss","/js/charFadeIn.js":"fSUqx","/js/lightboxMove.js":"9Z8An"}],"fr1Gn":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _gsap = require("gsap");
@@ -8838,44 +8838,6 @@ const titleIn = ()=>{
     });
 };
 
-},{"split-type":"fvGAG","gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fSUqx":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "textCharsSplit", ()=>textCharsSplit);
-parcelHelpers.export(exports, "charFadeIn", ()=>charFadeIn);
-var _splitType = require("split-type");
-var _splitTypeDefault = parcelHelpers.interopDefault(_splitType);
-var _gsap = require("gsap");
-var _scrollTrigger = require("gsap/ScrollTrigger");
-(0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
-const textCharsSplit = ()=>{
-    new (0, _splitTypeDefault.default)(".char-fade-in", {
-        types: "words, chars",
-        tagName: "span"
-    });
-};
-const charFadeIn = ()=>{
-    $(".char-fade-in").each(function() {
-        let triggerElement = $(this);
-        let targetElements = triggerElement.find(".char");
-        let tl = (0, _gsap.gsap).timeline({
-            scrollTrigger: {
-                trigger: triggerElement,
-                start: "top 80%",
-                end: "top 60%",
-                scrub: 1
-            }
-        });
-        tl.from(targetElements, {
-            duration: 0.01,
-            opacity: 0,
-            stagger: {
-                amount: 0.1
-            }
-        });
-    });
-};
-
 },{"split-type":"fvGAG","gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6SUss":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -8916,6 +8878,44 @@ const textBlurIn = ()=>{
     });
 };
 
+},{"split-type":"fvGAG","gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fSUqx":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "textCharsSplit", ()=>textCharsSplit);
+parcelHelpers.export(exports, "charFadeIn", ()=>charFadeIn);
+var _splitType = require("split-type");
+var _splitTypeDefault = parcelHelpers.interopDefault(_splitType);
+var _gsap = require("gsap");
+var _scrollTrigger = require("gsap/ScrollTrigger");
+(0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
+const textCharsSplit = ()=>{
+    new (0, _splitTypeDefault.default)(".char-fade-in", {
+        types: "words, chars",
+        tagName: "span"
+    });
+};
+const charFadeIn = ()=>{
+    $(".char-fade-in").each(function() {
+        let triggerElement = $(this);
+        let targetElements = triggerElement.find(".char");
+        let tl = (0, _gsap.gsap).timeline({
+            scrollTrigger: {
+                trigger: triggerElement,
+                start: "top 80%",
+                end: "top 60%",
+                scrub: 1
+            }
+        });
+        tl.from(targetElements, {
+            duration: 0.01,
+            opacity: 0,
+            stagger: {
+                amount: 0.1
+            }
+        });
+    });
+};
+
 },{"split-type":"fvGAG","gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Z8An":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -8924,31 +8924,16 @@ var _scrollTrigger = require("gsap/ScrollTrigger");
 (0, _gsap.gsap).registerPlugin((0, _scrollTrigger.ScrollTrigger));
 const lightboxMove = ()=>{
     $(".lightbox").each(function(index) {
-        if ((index + 1) % 2 === 0) // Even-indexed elements
         (0, _gsap.gsap).fromTo($(this), {
-            y: "0rem"
+            y: (index + 1) % 2 === 0 ? "2rem" : "-2rem"
         }, {
-            y: "-6rem",
+            y: (index + 1) % 2 === 0 ? "-2rem" : "0rem",
             duration: 1,
             ease: "power1.inOut",
             scrollTrigger: {
-                trigger: ".hero-content-wrap",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: true
-            }
-        });
-        else // Odd-indexed elements
-        (0, _gsap.gsap).fromTo($(this), {
-            y: "-2rem"
-        }, {
-            y: "2rem",
-            duration: 1,
-            ease: "power1.inOut",
-            scrollTrigger: {
-                trigger: ".hero-content-wrap",
-                start: "top top",
-                end: "bottom bottom",
+                trigger: $(this),
+                start: "top bottom",
+                end: "bottom top",
                 scrub: true
             }
         });
@@ -8956,6 +8941,6 @@ const lightboxMove = ()=>{
 };
 exports.default = lightboxMove;
 
-},{"gsap":"fPSuC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","gsap/ScrollTrigger":"7wnFk"}]},["jQqog","igcvL"], "igcvL", "parcelRequire94c2")
+},{"gsap":"fPSuC","gsap/ScrollTrigger":"7wnFk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["jQqog","igcvL"], "igcvL", "parcelRequire94c2")
 
 //# sourceMappingURL=app.js.map

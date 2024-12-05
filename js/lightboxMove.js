@@ -5,41 +5,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 const lightboxMove = () => {
   $(".lightbox").each(function (index) {
-    if ((index + 1) % 2 === 0) {
-      // Even-indexed elements
-      gsap.fromTo(
-        $(this),
-        { y: "2rem" },
-        {
-          y: "-2rem",
-          duration: 1,
-          ease: "power1.inOut",
-          scrollTrigger: {
-            trigger: ".hero-content-wrap",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: true,
-          },
-        }
-      );
-    } else {
-      // Odd-indexed elements
-      gsap.fromTo(
-        $(this),
-        { y: "-2rem" },
-        {
-          y: "0rem",
-          duration: 1,
-          ease: "power1.inOut",
-          scrollTrigger: {
-            trigger: ".hero-content-wrap",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: true,
-          },
-        }
-      );
-    }
+    gsap.fromTo(
+      $(this),
+      { y: (index + 1) % 2 === 0 ? "2rem" : "-2rem" }, // Initial position based on index
+      {
+        y: (index + 1) % 2 === 0 ? "-2rem" : "0rem", // Final position based on index
+        duration: 1,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: $(this), // Each lightbox element as the trigger
+          start: "top bottom", // Animation starts when the top of the element hits the bottom of the viewport
+          end: "bottom top", // Animation ends when the bottom of the element hits the top of the viewport
+          scrub: true,
+        },
+      }
+    );
   });
 };
 
