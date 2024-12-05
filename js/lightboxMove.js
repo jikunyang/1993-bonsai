@@ -28,7 +28,7 @@ const lightboxMove = () => {
         $(this),
         { y: "-2rem" },
         {
-          y: "2rem",
+          y: "0rem",
           duration: 1,
           ease: "power1.inOut",
           scrollTrigger: {
