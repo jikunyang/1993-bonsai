@@ -9,9 +9,9 @@ const lightboxMove = () => {
       // Even-indexed elements
       gsap.fromTo(
         $(this),
-        { y: "0rem" },
+        { y: "2rem" },
         {
-          y: "-6rem",
+          y: "-2rem",
           duration: 1,
           ease: "power1.inOut",
           scrollTrigger: {
